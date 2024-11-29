@@ -9,8 +9,9 @@ from queries import (
     get_average_rooms_and_baths_by_ville,
     get_annonces_over_time,
     get_all_cities,
-    get_all_equipments
+    get_all_equipments,
+    get_equipement_ids_by_names
 )
 
-print(get_average_rooms_and_baths_by_ville())
+print(get_equipement_ids_by_names(['Ascenseur','Parking']))
 

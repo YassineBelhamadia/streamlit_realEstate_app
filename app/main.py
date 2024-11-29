@@ -11,7 +11,8 @@ from queries import (
     get_average_rooms_and_baths_by_ville,
     get_annonces_over_time,
     get_all_cities,
-    get_all_equipments
+    get_all_equipments,
+    get_equipement_ids_by_names
 )
 st.set_page_config(layout="wide")
 
@@ -30,9 +31,17 @@ min_baths, max_baths = st.sidebar.slider("Number of Bathrooms", 0, 5, (1, 3))
 cities = get_all_cities()
 equipments = get_all_equipments()
 
+
+
 # Sidebar Filters for Cities and Equipments
 selected_villes = st.sidebar.multiselect("Select Cities", cities)
-selected_equipments = st.sidebar.multiselect("Select Equipments", equipments)
+selected_equipments_names = st.sidebar.multiselect("Select Equipments", equipments)
+
+selected_equipments_ids = get_equipement_ids_by_names(selected_equipments_names)
+
+# checking the equipement values 
+
+
 
 # Date Range Picker
 start_date, end_date = st.sidebar.date_input(
@@ -49,7 +58,7 @@ filtered_annonces = get_annonces_filtered(
     min_baths=min_baths,
     max_baths=max_baths,
     ville_names=selected_villes,
-    equipment_ids=selected_equipments,  # Send selected equipment IDs to the query
+    equipment_ids=selected_equipments_ids,  # Send selected equipment IDs to the query
     start_date=start_date,
     end_date=end_date,
 )

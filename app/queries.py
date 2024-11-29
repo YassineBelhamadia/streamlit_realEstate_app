@@ -129,3 +129,16 @@ def get_all_equipments():
     equipments = session.query(Equipement.nom).distinct().all()
     session.close()
     return pd.DataFrame(equipments, columns=["Equipment"])
+
+def get_equipement_ids_by_names(names: list):
+    """
+    Retrieve a list of equipment IDs based on their names.
+
+    :param session: SQLAlchemy session instance.
+    :param names: List of equipment names to filter.
+    :return: List of equipment IDs matching the given names.
+    """
+    session = get_session()
+    IDs = session.query(Equipement.id).filter(Equipement.nom.in_(names)).all()
+    return  [id for id, in IDs]
+    
