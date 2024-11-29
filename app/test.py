@@ -12,5 +12,5 @@ from queries import (
     get_all_equipments
 )
 
-print(type(get_price_distribution()))
+print(get_average_rooms_and_baths_by_ville())
 

@@ -100,14 +100,14 @@ st.plotly_chart(equipment_pie_chart)
 st.subheader("Average Number of Rooms and Bathrooms by City")
 rooms_baths_data = pd.DataFrame(
     get_average_rooms_and_baths_by_ville(),
-    columns=["City", "Avg Rooms", "Avg Baths"],
+    columns=["City", "Average_Rooms", "Average_Baths"],
 )
 rooms_baths_bar_chart = go.Figure()
 rooms_baths_bar_chart.add_trace(
-    go.Bar(x=rooms_baths_data["City"], y=rooms_baths_data["Avg Rooms"], name="Average Rooms")
+    go.Bar(x=rooms_baths_data["City"], y=rooms_baths_data["Average_Rooms"], name="Average Rooms")
 )
 rooms_baths_bar_chart.add_trace(
-    go.Bar(x=rooms_baths_data["City"], y=rooms_baths_data["Avg Baths"], name="Average Bathrooms")
+    go.Bar(x=rooms_baths_data["City"], y=rooms_baths_data["Average_Baths"], name="Average Bathrooms")
 )
 rooms_baths_bar_chart.update_layout(barmode="group", title="Average Rooms and Bathrooms by City")
 st.plotly_chart(rooms_baths_bar_chart)

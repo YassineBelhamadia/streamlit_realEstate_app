@@ -99,7 +99,7 @@ def get_average_rooms_and_baths_by_ville():
         Ville.nom,
         func.avg(Annonce.nb_pieces).label("Average_Rooms"),
         func.avg(Annonce.nb_salles_bain).label("Average_Baths")
-    ).join(Ville).group_by(Ville.nom).all()
+    ).join(Ville).group_by(Ville.nom).limit(15).all()
     session.close()
     return pd.DataFrame(results, columns=["City", "Average_Rooms", "Average_Baths"])
 
