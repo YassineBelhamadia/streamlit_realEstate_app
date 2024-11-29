@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:13
+    container_name: realestate_db
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: realestate_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - realestate_db_data:/var/lib/postgresql/data
+    networks:
+      - realestate_net
+    restart: always
+
+volumes:
+  realestate_db_data:
